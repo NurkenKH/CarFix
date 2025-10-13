@@ -1,0 +1,98 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Definition of the design system. All colors, gradients, fonts, etc should be defined here. 
+All colors MUST be HSL.
+*/
+
+@layer base {
+  :root {
+    /* CarFix Design System - Dark Futuristic Theme */
+    --background: 223 47% 5%;
+    --foreground: 210 40% 98%;
+
+    --card: 223 39% 8%;
+    --card-foreground: 210 40% 98%;
+
+    --popover: 223 39% 10%;
+    --popover-foreground: 210 40% 98%;
+
+    --primary: 195 100% 50%;
+    --primary-foreground: 223 47% 5%;
+
+    --secondary: 223 39% 12%;
+    --secondary-foreground: 210 40% 98%;
+
+    --muted: 223 30% 15%;
+    --muted-foreground: 215 20% 65%;
+
+    --accent: 28 100% 50%;
+    --accent-foreground: 223 47% 5%;
+
+    --destructive: 0 84% 60%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 223 30% 20%;
+    --input: 223 30% 18%;
+    --ring: 195 100% 50%;
+
+    --radius: 0.75rem;
+
+    /* Glass morphism */
+    --glass-bg: 223 39% 10% / 0.4;
+    --glass-border: 210 40% 98% / 0.1;
+    
+    /* Gradients */
+    --gradient-primary: linear-gradient(135deg, hsl(195 100% 50%), hsl(223 100% 60%));
+    --gradient-accent: linear-gradient(135deg, hsl(28 100% 50%), hsl(45 100% 60%));
+    --gradient-dark: linear-gradient(180deg, hsl(223 47% 5%), hsl(223 39% 8%));
+    
+    /* Shadows and glows */
+    --glow-primary: 0 0 20px hsl(195 100% 50% / 0.3);
+    --glow-accent: 0 0 20px hsl(28 100% 50% / 0.3);
+    --shadow-panel: 0 8px 32px 0 rgb(0 0 0 / 0.6);
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground antialiased;
+    background: linear-gradient(180deg, hsl(223 47% 5%), hsl(223 39% 8%));
+    min-height: 100vh;
+  }
+}
+
+@layer utilities {
+  .glass-panel {
+    background: rgba(20, 24, 36, 0.4);
+    backdrop-filter: blur(12px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+  }
+  
+  .glow-primary {
+    box-shadow: 0 0 20px hsl(195 100% 50% / 0.3);
+  }
+  
+  .glow-accent {
+    box-shadow: 0 0 20px hsl(28 100% 50% / 0.3);
+  }
+  
+  .text-gradient-primary {
+    background: linear-gradient(135deg, hsl(195 100% 50%), hsl(223 100% 60%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  
+  .text-gradient-accent {
+    background: linear-gradient(135deg, hsl(28 100% 50%), hsl(45 100% 60%));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+}
