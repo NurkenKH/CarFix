@@ -11,9 +11,17 @@ import {
   Zap,
   ChevronRight,
   Search,
+  Disc,
+  Youtube,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
+import {
+  Tooltip,
+  TooltipContent,
+  TooltipProvider,
+  TooltipTrigger,
+} from "@/components/ui/tooltip";
 
 interface PartCategory {
   id: string;
@@ -27,55 +35,55 @@ const categories: PartCategory[] = [
     id: "engine",
     name: "Engine",
     icon: Cog,
-    parts: ["Turbo", "Air Filter", "Exhaust", "Fuel System"],
+    parts: ["Turbocharger", "Air Filter", "Exhaust System", "Fuel System"],
   },
   {
     id: "transmission",
     name: "Transmission",
     icon: Settings,
-    parts: ["Clutch", "Gearbox", "Differential"],
+    parts: ["Clutch Kit", "Gearbox", "Differential"],
   },
   {
     id: "wheels",
     name: "Wheels",
     icon: Circle,
-    parts: ["Rims", "Tires", "Brakes"],
+    parts: ["Alloy Rims", "Performance Tires", "Brake System"],
   },
   {
     id: "suspension",
     name: "Suspension",
     icon: Box,
-    parts: ["Springs", "Dampers", "Anti-Roll Bars"],
+    parts: ["Coil Springs", "Shock Absorbers", "Anti-Roll Bars"],
   },
   {
     id: "body",
     name: "Body",
     icon: Box,
-    parts: ["Hood", "Bumpers", "Side Skirts", "Spoiler"],
+    parts: ["Carbon Fiber Hood", "Sport Bumpers", "Side Skirts", "Rear Spoiler"],
   },
   {
     id: "paint",
     name: "Paint",
     icon: PaintBucket,
-    parts: ["Base Color", "Finish", "Decals"],
+    parts: ["Base Color Paint", "Clear Coat Finish", "Custom Decals"],
   },
   {
     id: "aero",
     name: "Aero",
     icon: Wind,
-    parts: ["Front Splitter", "Rear Wing", "Diffuser"],
+    parts: ["Front Splitter", "Rear Wing", "Rear Diffuser"],
   },
   {
     id: "interior",
     name: "Interior",
     icon: Armchair,
-    parts: ["Seats", "Steering Wheel", "Dashboard"],
+    parts: ["Racing Seats", "Sport Steering Wheel", "Custom Dashboard"],
   },
   {
     id: "electronics",
     name: "Electronics",
     icon: Zap,
-    parts: ["ECU", "Sensors", "Lighting"],
+    parts: ["Performance ECU", "Performance Sensors", "LED Lighting Kit"],
   },
 ];
 
@@ -157,6 +165,44 @@ export const Sidebar = ({ onPartSelect }: SidebarProps) => {
                       {part}
                     </button>
                   ))}
+                  
+                  <TooltipProvider>
+                    <div className="flex gap-2 mt-3 pt-2 border-t border-border/50">
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <a
+                            href="https://kolesa.kz"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-1 flex items-center justify-center gap-2 p-2 rounded-md text-xs font-medium bg-secondary/50 hover:bg-primary/20 hover:text-primary transition-all group"
+                          >
+                            <Disc className="w-4 h-4 group-hover:rotate-180 transition-transform duration-500" />
+                            Buy on Kolesa.kz
+                          </a>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Find authentic parts</p>
+                        </TooltipContent>
+                      </Tooltip>
+
+                      <Tooltip>
+                        <TooltipTrigger asChild>
+                          <a
+                            href="https://youtube.com"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex-1 flex items-center justify-center gap-2 p-2 rounded-md text-xs font-medium bg-secondary/50 hover:bg-destructive/20 hover:text-destructive transition-all group"
+                          >
+                            <Youtube className="w-4 h-4 group-hover:scale-110 transition-transform" />
+                            Watch Tutorial
+                          </a>
+                        </TooltipTrigger>
+                        <TooltipContent>
+                          <p>Learn installation tips</p>
+                        </TooltipContent>
+                      </Tooltip>
+                    </div>
+                  </TooltipProvider>
                 </motion.div>
               )}
             </motion.div>
