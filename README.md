@@ -10,6 +10,10 @@
 Instead of template we integrated with real Toyota Camry model
 <img width="1896" height="804" alt="image" src="https://github.com/user-attachments/assets/2df31d0f-27ce-4c8c-832e-4ef98da511f8" />
 
+UPDATE 23.11.2025
+<img width="875" height="606" alt="image" src="https://github.com/user-attachments/assets/5667faa3-1951-427c-9f5d-9ad8a89521e5" />
+
+Each category now has its own specific links - Kolesa.kz links go to relevant parts categories, and YouTube links search for Toyota Camry specific installation tutorials for each part type.
 ## What technologies are used for this project?
 
 This project is built with:
@@ -19,6 +23,7 @@ This project is built with:
 - React
 - shadcn-ui
 - Tailwind CSS
+
 
 
 
