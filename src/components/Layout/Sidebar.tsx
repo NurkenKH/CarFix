@@ -28,6 +28,8 @@ interface PartCategory {
   name: string;
   icon: React.ElementType;
   parts: string[];
+  kolesaLink: string;
+  youtubeLink: string;
 }
 
 const categories: PartCategory[] = [
@@ -36,54 +38,72 @@ const categories: PartCategory[] = [
     name: "Engine",
     icon: Cog,
     parts: ["Turbocharger", "Air Filter", "Exhaust System", "Fuel System"],
+    kolesaLink: "https://kolesa.kz/a/show/181374114?search_id=3dc794718dbb8c1104f55f365555682d5209e38b&search_type=vip&advert_position=2",
+    youtubeLink: "https://www.youtube.com/watch?v=4vZlf69OfXM",
   },
   {
     id: "transmission",
     name: "Transmission",
     icon: Settings,
     parts: ["Clutch Kit", "Gearbox", "Differential"],
+    kolesaLink: "https://kolesa.kz/a/show/201653716?search_id=410070e0f963afbdbbbe50b959437332a289562a&search_type=vip&advert_position=1",
+    youtubeLink: "https://www.youtube.com/watch?v=_z-_o5036qU",
   },
   {
     id: "wheels",
     name: "Wheels",
     icon: Circle,
     parts: ["Alloy Rims", "Performance Tires", "Brake System"],
+    kolesaLink: "https://kolesa.kz/zapchasti/shiny/almaty/?_txt_=%D1%88%D0%B8%D0%BD%D1%8B+%D1%82%D0%BE%D0%B9%D0%BE%D1%82%D0%B0",
+    youtubeLink: "https://www.youtube.com/watch?v=6hfHOzb7eYc",
   },
   {
     id: "suspension",
     name: "Suspension",
     icon: Box,
     parts: ["Coil Springs", "Shock Absorbers", "Anti-Roll Bars"],
+    kolesaLink: "https://kolesa.kz/zapchasti/prodazha/toyota/camry/?_txt_=%D0%B0%D0%BC%D0%BE%D1%80%D1%82%D0%B8%D0%B7%D0%B0%D1%82%D0%BE%D1%80%D1%8B+%D0%BA%D0%B0%D0%BC%D1%80%D0%B8+40",
+    youtubeLink: "https://www.youtube.com/watch?v=Drs3cAYQq-Q",
   },
   {
     id: "body",
     name: "Body",
     icon: Box,
     parts: ["Carbon Fiber Hood", "Sport Bumpers", "Side Skirts", "Rear Spoiler"],
+    kolesaLink: "https://kolesa.kz/zapchasti/prodazha/toyota/caldina/?_txt_=%D0%B1%D0%B0%D0%BC%D0%BF%D0%B5%D1%80+%D1%82%D0%BE%D0%B9%D0%BE%D1%82%D0%B0",
+    youtubeLink: "https://www.youtube.com/watch?v=ww3EZy6Rl5o",
   },
   {
     id: "paint",
     name: "Paint",
     icon: PaintBucket,
     parts: ["Base Color Paint", "Clear Coat Finish", "Custom Decals"],
+    kolesaLink: "https://kuzovnoi-remont.kz/services/pokraska-avto/toyota/",
+    youtubeLink: "https://www.youtube.com/watch?v=p2vM9qVJSns",
   },
   {
     id: "aero",
     name: "Aero",
     icon: Wind,
     parts: ["Front Splitter", "Rear Wing", "Rear Diffuser"],
+    kolesaLink: "https://kolesa.kz/zapchasti/prodazha/toyota/yaris/?_txt_=%D0%BA%D0%BE%D0%BD%D0%B4%D0%B8%D1%86%D0%B8%D0%BE%D0%BD%D0%B5%D1%80",
+    youtubeLink: "https://www.youtube.com/watch?v=-u6PpvoxkKg",
   },
   {
     id: "interior",
     name: "Interior",
     icon: Armchair,
     parts: ["Racing Seats", "Sport Steering Wheel", "Custom Dashboard"],
+    kolesaLink: "https://kolesa.kz/zapchasti/prodazha/toyota/camry/?_txt_=%D1%81%D0%B8%D0%B4%D0%B5%D0%BD%D1%8C%D1%8F+toyota",
+    youtubeLink: "https://www.youtube.com/watch?v=2MyKOWImBh4",
   },
   {
     id: "electronics",
     name: "Electronics",
     icon: Zap,
     parts: ["Performance ECU", "Performance Sensors", "LED Lighting Kit"],
+    kolesaLink: "https://kolesa.kz/zapchasti/prodazha/toyota/?_txt_=%D0%BF%D0%B0%D1%80%D1%8B&find-in-text=0",
+    youtubeLink: "https://www.youtube.com/watch?v=5rs2iYk0Rlw",
   },
 ];
 
@@ -171,7 +191,7 @@ export const Sidebar = ({ onPartSelect }: SidebarProps) => {
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <a
-                            href="https://kolesa.kz"
+                            href={category.kolesaLink}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-1 flex items-center justify-center gap-2 p-2 rounded-md text-xs font-medium bg-secondary/50 hover:bg-primary/20 hover:text-primary transition-all group"
@@ -188,7 +208,7 @@ export const Sidebar = ({ onPartSelect }: SidebarProps) => {
                       <Tooltip>
                         <TooltipTrigger asChild>
                           <a
-                            href="https://youtube.com"
+                            href={category.youtubeLink}
                             target="_blank"
                             rel="noopener noreferrer"
                             className="flex-1 flex items-center justify-center gap-2 p-2 rounded-md text-xs font-medium bg-secondary/50 hover:bg-destructive/20 hover:text-destructive transition-all group"
