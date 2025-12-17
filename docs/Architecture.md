@@ -254,75 +254,7 @@ out center;
 ## 5. Database Schema
 
 ### Current Schema (Supabase PostgreSQL)
-
-#### Table: `users` (Managed by Supabase Auth)
-```sql
-CREATE TABLE auth.users (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  email VARCHAR(255) UNIQUE NOT NULL,
-  encrypted_password VARCHAR(255) NOT NULL,
-  email_confirmed_at TIMESTAMP,
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW()
-);
-```
-
-#### Table: `profiles` (Future: User Profiles)
-```sql
-CREATE TABLE public.profiles (
-  id UUID PRIMARY KEY REFERENCES auth.users(id) ON DELETE CASCADE,
-  username VARCHAR(50) UNIQUE,
-  full_name VARCHAR(255),
-  avatar_url TEXT,
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW()
-);
-```
-
-#### Table: `saved_configurations` (Future: User Configurations)
-```sql
-CREATE TABLE public.saved_configurations (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
-  car_model VARCHAR(100) NOT NULL,
-  configuration_data JSONB NOT NULL,
-  -- JSONB example: { "parts": ["Side Mirror", "Front Windshield"], "colors": {...} }
-  created_at TIMESTAMP DEFAULT NOW(),
-  updated_at TIMESTAMP DEFAULT NOW()
-);
-```
-
-#### Table: `part_reviews` (Future: User Reviews)
-```sql
-CREATE TABLE public.part_reviews (
-  id UUID PRIMARY KEY DEFAULT uuid_generate_v4(),
-  user_id UUID REFERENCES auth.users(id) ON DELETE CASCADE,
-  part_id VARCHAR(100) NOT NULL,
-  rating INTEGER CHECK (rating BETWEEN 1 AND 5),
-  review_text TEXT,
-  created_at TIMESTAMP DEFAULT NOW()
-);
-```
-
-### Indexes
-```sql
-CREATE INDEX idx_profiles_username ON public.profiles(username);
-CREATE INDEX idx_saved_configs_user ON public.saved_configurations(user_id);
-CREATE INDEX idx_part_reviews_part ON public.part_reviews(part_id);
-```
-
-### Row Level Security (RLS)
-```sql
--- Users can only read their own profiles
-ALTER TABLE public.profiles ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "Users can view own profile" ON public.profiles
-  FOR SELECT USING (auth.uid() = id);
-
--- Users can only manage their own configurations
-ALTER TABLE public.saved_configurations ENABLE ROW LEVEL SECURITY;
-CREATE POLICY "Users can manage own configs" ON public.saved_configurations
-  FOR ALL USING (auth.uid() = user_id);
-```
+<img width="773" height="541" alt="image" src="https://github.com/user-attachments/assets/5af39479-255c-4c38-a833-51d55cdb7063" />
 
 ---
 
@@ -711,3 +643,4 @@ End Users (Global Access)
 **Last Updated**: December 17, 2025  
 **Prepared by**: Nurken (Developer), Kanat (PM)  
 **Reviewed by**: Tamerlan (UX/UI), Kuanishkerey (QA)
+
