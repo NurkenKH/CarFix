@@ -2,6 +2,7 @@
 ## LINK: https://carfix-studio.netlify.app/
 ## Overview
 CarFix Studio is an advanced web-based platform for car modification and tuning visualization. The application provides an interactive 3D car model viewer that allows users to explore various car parts, view detailed information about components, find nearby auto service centers, and receive AI-powered assistance for car maintenance and repairs.
+<img width="1900" height="901" alt="image" src="https://github.com/user-attachments/assets/17593a6a-881a-49e2-9ae4-6c8bf21b64bb" />
 
 **Problem Statement:**  
 Car owners and enthusiasts often struggle to visualize modifications before purchase, find reliable information about car parts, and locate trusted auto service centers. Traditional catalogs lack interactivity, and finding authentic parts with installation guidance remains challenging.
@@ -20,6 +21,8 @@ CarFix Studio provides an immersive 3D visualization platform where users can:
 - Car owners requiring maintenance information
 - Auto mechanics and service professionals
 - Car parts dealers and vendors
+- AI assistnat integrated
+<img width="1850" height="886" alt="image" src="https://github.com/user-attachments/assets/5cd1a1fa-49e2-45e3-936f-f0e0f6138fae" />
 
 ## Tech Stack
 
@@ -40,6 +43,7 @@ CarFix Studio provides an immersive 3D visualization platform where users can:
 ### Maps & Geolocation
 - **Leaflet 1.9.4** - Interactive maps library
 - **React Leaflet 4.2.1** - React components for Leaflet
+<img width="1836" height="859" alt="image" src="https://github.com/user-attachments/assets/c74c7069-0fec-4943-9980-e60fb2a29104" />
 
 ### Backend & Database
 - **Supabase 2.81.1** - Backend as a Service (PostgreSQL database, authentication, storage)
@@ -230,4 +234,5 @@ For questions, issues, or contributions, please contact the development team or 
 ---
 
 **CarFix Studio** - Visualize, Customize, Drive
+
 
