@@ -63,7 +63,7 @@ export const CarModel = ({ selectedPart }: CarModelProps) => {
   }
 
   return (
-    <group ref={groupRef} position={[0, -0.5, 0]}>
+    <group ref={groupRef} position={[0, -0.5, 0]} scale={[2.5, 2.5, 2.5]}>
       <primitive object={scene} castShadow receiveShadow />
     </group>
   );

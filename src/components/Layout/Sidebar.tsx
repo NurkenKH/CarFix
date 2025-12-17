@@ -13,6 +13,8 @@ import {
   Search,
   Disc,
   Youtube,
+  Car,
+  Eye,
 } from "lucide-react";
 import { Input } from "@/components/ui/input";
 import { ScrollArea } from "@/components/ui/scroll-area";
@@ -30,9 +32,19 @@ interface PartCategory {
   parts: string[];
   kolesaLink: string;
   youtubeLink: string;
+  is3DClickable?: boolean;
 }
 
 const categories: PartCategory[] = [
+  {
+    id: "3d-parts",
+    name: "3D Clickable Parts",
+    icon: Eye,
+    parts: ["Front Windshield", "Side Mirror", "Left Body Panel Door"],
+    kolesaLink: "https://kolesa.kz/zapchasti/prodazha/toyota/corolla/",
+    youtubeLink: "https://www.youtube.com/watch?v=ZvpqZQMvdp0",
+    is3DClickable: true,
+  },
   {
     id: "engine",
     name: "Engine",
@@ -105,18 +117,35 @@ const categories: PartCategory[] = [
     kolesaLink: "https://kolesa.kz/zapchasti/prodazha/toyota/?_txt_=%D0%BF%D0%B0%D1%80%D1%8B&find-in-text=0",
     youtubeLink: "https://www.youtube.com/watch?v=5rs2iYk0Rlw",
   },
+  {
+    id: "mirror",
+    name: "Side Mirror",
+    icon: Circle,
+    parts: ["Left Mirror", "Right Mirror", "Mirror Glass"],
+    kolesaLink: "https://kolesa.kz/zapchasti/prodazha/toyota/corolla/?_txt_=%D0%B7%D0%B5%D1%80%D0%BA%D0%B0%D0%BB%D0%BE",
+    youtubeLink: "https://www.youtube.com/watch?v=ZvpqZQMvdp0",
+  },
 ];
 
 interface SidebarProps {
   onPartSelect: (categoryId: string, partName: string) => void;
+  on3DPartSelect?: (partName: string) => void;
 }
 
-export const Sidebar = ({ onPartSelect }: SidebarProps) => {
+export const Sidebar = ({ onPartSelect, on3DPartSelect }: SidebarProps) => {
   const [expandedCategory, setExpandedCategory] = useState<string | null>(null);
   const [searchQuery, setSearchQuery] = useState("");
 
   const toggleCategory = (categoryId: string) => {
     setExpandedCategory(expandedCategory === categoryId ? null : categoryId);
+  };
+
+  const handlePartClick = (category: PartCategory, part: string) => {
+    if (category.is3DClickable && on3DPartSelect) {
+      on3DPartSelect(part);
+    } else {
+      onPartSelect(category.id, part);
+    }
   };
 
   const filteredCategories = categories.filter(
@@ -176,12 +205,20 @@ export const Sidebar = ({ onPartSelect }: SidebarProps) => {
                   exit={{ height: 0, opacity: 0 }}
                   className="ml-10 mt-1 space-y-1 overflow-hidden"
                 >
+                  {category.is3DClickable && (
+                    <p className="text-xs text-primary/70 px-4 py-1 italic">
+                      Click to focus on 3D model
+                    </p>
+                  )}
                   {category.parts.map((part) => (
                     <button
                       key={part}
-                      onClick={() => onPartSelect(category.id, part)}
-                      className="w-full text-left p-2 px-4 rounded-md text-sm text-muted-foreground hover:text-primary hover:bg-secondary/50 transition-all"
+                      onClick={() => handlePartClick(category, part)}
+                      className={`w-full text-left p-2 px-4 rounded-md text-sm text-muted-foreground hover:text-primary hover:bg-secondary/50 transition-all ${
+                        category.is3DClickable ? "flex items-center gap-2" : ""
+                      }`}
                     >
+                      {category.is3DClickable && <Eye className="w-3 h-3" />}
                       {part}
                     </button>
                   ))}
